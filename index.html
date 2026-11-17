@@ -53,7 +53,6 @@
             perspective: 1000px;
         }
         
-        /* Container 3D Interativo */
         .cartridge-wrapper {
             width: 100%;
             padding: 25px 10px 15px 10px;
@@ -65,7 +64,6 @@
             cursor: pointer;
         }
 
-        /* Proporção exata do Cartucho Americano SNES (380x220) */
         .snes-cart-body {
             width: 380px;
             height: 220px;
@@ -77,7 +75,6 @@
             filter: drop-shadow(0 15px 22px rgba(0,0,0,0.7));
         }
 
-        /* Abas laterais */
         .cart-wing {
             width: 58px;
             height: 204px;
@@ -119,7 +116,6 @@
         .cart-wing.left .cart-screw { left: 26px; }
         .cart-wing.right .cart-screw { right: 26px; }
 
-        /* Bloco Central do Cartucho */
         .cart-center-block {
             width: 264px;
             height: 220px;
@@ -137,15 +133,15 @@
             z-index: 2;
         }
 
-        /* Adesivo (Label) com a capa ajustada do Super Metroid */
+        /* Aqui está apontando para o nome exato do arquivo no seu GitHub: snes_supermetroid.jpg */
         .cart-label-box {
             width: 100%;
             height: 112px;
             background-color: #0b0b0b;
-            background-image: url('snes_supermetroid_5.jpg');
-            background-size: 240%; /* Ajusta o zoom para focar na capa frontal presente na imagem da caixa */
+            background-image: url('snes_supermetroid.jpg');
+            background-size: 240%; 
             background-repeat: no-repeat;
-            background-position: 85% 50%; /* Posiciona o corte exatamente na área da capa do jogo */
+            background-position: 85% 50%; 
             border-radius: 0 0 12px 12px;
             border: 2px solid #141414;
             border-top: none;
@@ -154,7 +150,6 @@
             overflow: hidden;
         }
 
-        /* Reflexo sutil no adesivo */
         .cart-label-box::after {
             content: '';
             position: absolute;
