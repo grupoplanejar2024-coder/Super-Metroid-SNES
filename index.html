@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KUBO 3D - Cartucho Retrô SNES</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #121214;
+            color: #e1e1e6;
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        header {
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2rem;
+            color: #00f3ff;
+            text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+        }
+
+        p {
+            color: #a8a8b3;
+            margin-top: 0.5rem;
+        }
+
+        /* Container da Cena 3D */
+        .scene {
+            width: 260px;
+            height: 340px;
+            perspective: 1000px;
+            cursor: pointer;
+        }
+
+        /* O Cartucho em 3D */
+        .cartridge {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.5s ease;
+            transform: rotateX(15deg) rotateY(-15deg);
+        }
+
+        .scene:hover .cartridge {
+            transform: rotateX(0deg) rotateY(0deg) scale(1.05);
+        }
+
+        /* Faces do Cartucho (Efeito 3D com Espessura) */
+        .face {
+            position: absolute;
+            background-color: #29292e;
+            border: 4px solid #1a1a1e;
+        }
+
+        /* Frente do Cartucho (Capa) */
+        .face.front {
+            width: 260px;
+            height: 340px;
+            transform: translateZ(15px);
+            background: linear-gradient(135deg, #323238 0%, #202024 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-radius: 4px 4px 15px 15px;
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.8);
+            padding: 15px;
+        }
+
+        /* Verso do Cartucho */
+        .face.back {
+            width: 260px;
+            height: 340px;
+            transform: rotateY(180deg) translateZ(15px);
+            background-color: #202024;
+            border-radius: 4px 4px 15px 15px;
+        }
+
+        /* Laterais para dar volume */
+        .face.left {
+            width: 30px;
+            height: 340px;
+            left: -15px;
+            transform: rotateY(-90deg);
+            background-color: #1a1a1e;
+        }
+
+        .face.right {
+            width: 30px;
+            height: 340px;
+            right: -15px;
+            transform: rotateY(90deg);
+            background-color: #1a1a1e;
+        }
+
+        .face.top {
+            width: 260px;
+            height: 30px;
+            top: -15px;
+            transform: rotateX(90deg);
+            background-color: #1a1a1e;
+        }
+
+        /* Detalhes da Capa (Rótulo Estilo SNES) */
+        .label {
+            width: 90%;
+            height: 70%;
+            background: linear-gradient(to bottom, #111, #222);
+            border: 3px solid #00f3ff;
+            border-radius: 4px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 243, 255, 0.2);
+        }
+
+        .label-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #ff0055;
+            text-shadow: 2px 2px #000;
+        }
+
+        .label-img-placeholder {
+            width: 100%;
+            height: 110px;
+            background: #000;
+            border: 2px dashed #444;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #555;
+            font-size: 0.8rem;
+        }
+
+        /* Conectores inferiores do cartucho */
+        .connector-area {
+            position: absolute;
+            bottom: 0;
+            width: 160px;
+            height: 30px;
+            background: linear-gradient(to bottom, #cca700, #997a00);
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 0 0 4px 4px;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.5);
+        }
+
+        .actions {
+            margin-top: 2rem;
+        }
+
+        .btn {
+            background-color: #00f3ff;
+            color: #121214;
+            border: none;
+            padding: 10px 20px;
+            font-weight: bold;
+            font-family: 'Courier New', Courier, monospace;
+            cursor: pointer;
+            border-radius: 4px;
+            box-shadow: 0 4px 10px rgba(0, 243, 255, 0.3);
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .btn:hover {
+            background-color: #00c2cc;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>KUBO 3D - Cartucho SNES</h1>
+        <p>Passe o mouse ou toque para inspecionar o cartucho em 3D</p>
+    </header>
+
+    <div class="scene">
+        <div class="cartridge">
+            <!-- Frente -->
+            <div class="face front">
+                <div class="label">
+                    <div class="label-title">SUPER RETRO</div>
+                    <div class="label-img-placeholder">SPRITE / CAPA</div>
+                    <p style="font-size: 0.7rem; color: #fff;">VAPORWAVE EDITION</p>
+                </div>
+                <div class="connector-area"></div>
+            </div>
+            <!-- Verso -->
+            <div class="face back"></div>
+            <!-- Laterais e Topo -->
+            <div class="face left"></div>
+            <div class="face right"></div>
+            <div class="face top"></div>
+        </div>
+    </div>
+
+    <div class="actions">
+        <button class="btn" onclick="alert('Carregando ROM e assets...')">INICIAR JOGO</button>
+    </div>
+
+</body>
+</html>
