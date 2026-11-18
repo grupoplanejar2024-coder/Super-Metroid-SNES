@@ -316,25 +316,25 @@
             cartridge.style.transition = 'none';
         });
 
-        document.getElementById('play-btn').addEventListener('click', function() {
+    document.getElementById('play-btn').addEventListener('click', function() {
             document.getElementById('header-bar').style.display = 'none';
             document.getElementById('game-card').style.display = 'none';
             
             var container = document.getElementById('game-container');
             container.style.display = 'block';
 
-        window.EJS_player = '#game';
+            window.EJS_player = '#game';
             window.EJS_core = 'snes9x';
             window.EJS_gameName = 'Super Metroid';
             window.EJS_color = '#4b4b56';
             window.EJS_startOnLoaded = true;
             window.EJS_pathtodata = 'https://cdn.emulatorjs.org/stable/data/';
             
-            // Usando um link direto público de exemplo para o jogo carregar na hora:
-           window.EJS_gameUrl = 'https://www.emulatorjs.com/roms/snes/Super%20Metroid.sfc';
+            // Link direto via CDN otimizada para EmulatorJS
+            window.EJS_gameUrl = 'https://www.emulatorjs.com/roms/snes/Super%20Metroid.sfc';
+
             var script = document.createElement('script');
             script.src = 'https://cdn.emulatorjs.org/stable/data/loader.js';
             script.async = true;
             document.body.appendChild(script);
-        });
-    </script>  
+        }); 
