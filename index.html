@@ -133,15 +133,15 @@
             z-index: 2;
         }
 
-        /* CAPA CORRIGIDA: Ajustado para centralizar e alinhar perfeitamente a imagem */
+        /* CAPA: Apontando para super-metroid-boxart.webp e alinhada */
         .cart-label-box {
             width: 100%;
             height: 112px;
             background-color: #0b0b0b;
-            background-image: url('super-metroid-snes-boxart-brasil.webp');
-            background-size: cover;
+            background-image: url('super-metroid-boxart.webp');
+            background-size: 100% 100%;
             background-repeat: no-repeat;
-            background-position: center top; /* Corrigido para alinhar o topo corretamente */
+            background-position: center;
             border-radius: 0 0 12px 12px;
             border: 2px solid #141414;
             border-top: none;
@@ -330,8 +330,8 @@
             window.EJS_startOnLoaded = true;
             window.EJS_pathtodata = 'https://cdn.emulatorjs.org/stable/data/';
             
-            // CORREÇÃO DA TELA PRETA: Usando o nome exato do arquivo ROM que está no seu GitHub
-            window.EJS_gameUrl = 'É a Tal da Samus mané SM (BR) (www.romsport....sfc'; 
+            // NOME SIMPLES DA ROM PARA EVITAR ERRO DE REDE:
+            window.EJS_gameUrl = 'super-metroid.sfc';
 
             var script = document.createElement('script');
             script.src = 'https://cdn.emulatorjs.org/stable/data/loader.js';
