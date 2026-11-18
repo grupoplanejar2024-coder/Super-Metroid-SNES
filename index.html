@@ -6,49 +6,53 @@
     <title>Super Metroid - Kubo Touch</title>
     <style>
         * { box-sizing: border-box; }
-        html, body {
-            margin: 0;
-            padding: 0;
+        body, html { 
+            margin: 0; 
+            padding: 0; 
+            width: 100%; 
+            min-height: 100%; 
+            background-color: #121212; 
+            color: #fff; 
+            font-family: Arial, sans-serif; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            overflow-x: hidden; 
+        }
+        
+        header { 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            text-align: center; 
+            padding: 15px; 
+            background: #1e1e1e; 
+            z-index: 5; 
+        }
+        
+        .badge { 
+            background: #333333; 
+            color: #fff; 
+            padding: 4px 12px; 
+            border-radius: 20px; 
+            font-weight: bold; 
+            font-size: 14px; 
+            border: 1px solid #555; 
+        }
+        
+        #game-card { 
             width: 100%;
-            min-height: 100%;
-            background-color: #121212;
-            color: #fff;
-            font-family: Arial, sans-serif;
-        }
-        body { overflow-x: hidden; overflow-y: auto; }
-        body.playing { overflow: hidden; }
-
-        header {
-            position: sticky;
-            top: 0;
-            width: 100%;
-            text-align: center;
-            padding: 15px;
-            background: #1e1e1e;
-            z-index: 5;
-        }
-
-        .badge {
-            background: #333333;
-            color: #fff;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-weight: bold;
-            font-size: 14px;
-            border: 1px solid #555;
-        }
-
-        #game-card {
-            width: calc(100% - 40px);
-            max-width: 440px;
-            margin: 24px auto;
-            background: #1e1e1e;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+            max-width: 440px; 
+            margin: 80px 20px 20px 20px; 
+            background: #1e1e1e; 
+            border-radius: 12px; 
+            overflow: hidden; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.7); 
             perspective: 1000px;
         }
-
+        
         .cartridge-wrapper {
             width: 100%;
             padding: 25px 10px 15px 10px;
@@ -63,7 +67,6 @@
         .snes-cart-body {
             width: 380px;
             height: 220px;
-            flex-shrink: 0;
             position: relative;
             display: flex;
             align-items: flex-end;
@@ -83,10 +86,23 @@
             padding: 22px 0 34px 0;
             box-shadow: inset 0 2px 3px rgba(255,255,255,0.4), inset 0 -4px 6px rgba(0,0,0,0.3);
         }
-        .cart-wing.left { border-radius: 4px 0 0 4px; border-right: 1px solid #6b6b74; }
-        .cart-wing.right { border-radius: 0 4px 4px 0; border-left: 1px solid #6b6b74; }
 
-        .wing-groove { width: 100%; height: 4px; background: #61616a; border-bottom: 1px solid #b8b8c2; }
+        .cart-wing.left {
+            border-radius: 4px 0 0 4px;
+            border-right: 1px solid #6b6b74;
+        }
+
+        .cart-wing.right {
+            border-radius: 0 4px 4px 0;
+            border-left: 1px solid #6b6b74;
+        }
+
+        .wing-groove {
+            width: 100%;
+            height: 4px;
+            background: #61616a;
+            border-bottom: 1px solid #b8b8c2;
+        }
 
         .cart-screw {
             position: absolute;
@@ -105,7 +121,7 @@
             height: 220px;
             background: linear-gradient(180deg, #acacb6 0%, #9696a0 100%);
             border-radius: 6px 6px 2px 2px;
-            box-shadow:
+            box-shadow: 
                 -4px 0 7px rgba(0,0,0,0.28),
                 4px 0 7px rgba(0,0,0,0.28),
                 inset 0 2px 4px rgba(255,255,255,0.6),
@@ -117,6 +133,7 @@
             z-index: 2;
         }
 
+        /* CAPA ALINHADA */
         .cart-label-box {
             width: 100%;
             height: 112px;
@@ -132,6 +149,7 @@
             position: relative;
             overflow: hidden;
         }
+
         .cart-label-box::after {
             content: '';
             position: absolute;
@@ -141,7 +159,9 @@
             transform: skewX(-25deg);
             transition: left 0.6s ease;
         }
-        .snes-cart-body:hover .cart-label-box::after { left: 150%; }
+        .snes-cart-body:hover .cart-label-box::after {
+            left: 150%;
+        }
 
         .cart-lock-slot {
             width: 236px;
@@ -154,6 +174,7 @@
             justify-content: center;
             align-items: center;
         }
+
         .cart-lock-inner {
             width: 78px;
             height: 11px;
@@ -164,23 +185,23 @@
 
         .content { padding: 20px; }
         h1 { margin: 0 0 10px 0; font-size: 24px; color: #e5e5e5; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
-        .meta-info { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 15px; font-size: 13px; color: #aaa; }
+        .meta-info { display: flex; gap: 10px; margin-bottom: 15px; font-size: 13px; color: #aaa; }
         .description { font-size: 14px; line-height: 1.5; color: #ddd; margin-bottom: 15px; }
         .details { font-size: 13px; color: #bbb; margin-bottom: 20px; }
         .details ul { padding-left: 20px; margin: 0; }
-
-        .btn-play {
-            display: block;
-            width: 100%;
-            padding: 16px;
-            background: #2b2b2b;
-            color: #fff;
-            border: 1px solid #555;
-            border-radius: 8px;
-            font-weight: bold;
-            font-size: 18px;
-            cursor: pointer;
-            text-align: center;
+        
+        .btn-play { 
+            display: block; 
+            width: 100%; 
+            padding: 16px; 
+            background: #2b2b2b; 
+            color: #fff; 
+            border: 1px solid #555; 
+            border-radius: 8px; 
+            font-weight: bold; 
+            font-size: 18px; 
+            cursor: pointer; 
+            text-align: center; 
             outline: none;
             position: relative;
             z-index: 10;
@@ -188,47 +209,23 @@
         }
         .btn-play:hover { background: #3b3b3b; transform: translateY(-2px); }
         .btn-play:active { background: #1f1f1f; transform: translateY(0); }
-        .btn-play:disabled { opacity: .6; cursor: wait; transform: none; }
 
-        /* JOGO em tela cheia */
-        #game-container {
-            display: none;
+        #game-container { 
+            display: none; 
             position: fixed;
             top: 0;
             left: 0;
-            width: 100vw;
-            height: 100vh;
-            height: 100dvh;
+            width: 100%; 
+            height: 100%; 
             z-index: 99999;
             background: #000;
         }
-        #game-container.active { display: block; }
         #game { width: 100%; height: 100%; }
 
-        #btn-back {
-            display: none;
-            position: fixed;
-            top: 8px;
-            right: 8px;
-            z-index: 100000;
-            padding: 8px 12px;
-            background: rgba(0,0,0,.6);
-            color: #fff;
-            border: 1px solid #555;
-            border-radius: 6px;
-            font-size: 13px;
-            cursor: pointer;
-        }
-        body.playing #btn-back { display: block; }
-
-        #error-box { display: none; position: fixed; inset: 0; z-index: 100001; background: #121212; padding: 24px; overflow-y: auto; line-height: 1.6; font-size: 14px; }
-        #error-box.active { display: block; }
-        #error-box b.err { color: #e74c3c; }
-        #error-box code { display: block; background: #1e1e1e; padding: 8px; border-radius: 4px; margin: 4px 0; word-break: break-all; font-size: 12px; color: #ccc; }
-        #error-box button { margin-top: 16px; padding: 10px 18px; background: #555; border: none; border-radius: 6px; color: #fff; font-weight: bold; cursor: pointer; }
-
         @media (max-width: 400px) {
-            .snes-cart-body { transform: scale(0.85) translateZ(20px); }
+            .snes-cart-body {
+                transform: scale(0.85) translateZ(20px);
+            }
         }
     </style>
 </head>
@@ -267,10 +264,10 @@
                 </div>
             </div>
         </div>
-
+        
         <div class="content">
             <h1>Super Metroid</h1>
-
+            
             <div class="meta-info">
                 <span>🎮 1 Jogador</span>
                 <span>📅 1994</span>
@@ -291,143 +288,56 @@
         </div>
     </div>
 
-    <button id="btn-back">✕ Sair</button>
-
     <div id="game-container">
         <div id="game"></div>
     </div>
 
-    <div id="error-box"></div>
+    <script type="text/javascript">
+        const card = document.getElementById('game-card');
+        const cartridge = document.getElementById('cartridge3d');
 
-    <script>
-        /* ---------- Efeito 3D do cartucho ---------- */
-        var card = document.getElementById('game-card');
-        var cartridge = document.getElementById('cartridge3d');
-
-        card.addEventListener('mousemove', function (e) {
-            var rect = card.getBoundingClientRect();
-            var x = e.clientX - rect.left - rect.width / 2;
-            var y = e.clientY - rect.top - rect.height / 2;
-            cartridge.style.transform = 'rotateX(' + (-y / 14).toFixed(2) + 'deg) rotateY(' + (x / 14).toFixed(2) + 'deg) scale(1.03)';
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            
+            const rotateX = (-y / 14).toFixed(2);
+            const rotateY = (x / 14).toFixed(2);
+            
+            cartridge.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`;
         });
-        card.addEventListener('mouseleave', function () {
-            cartridge.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)';
+
+        card.addEventListener('mouseleave', () => {
+            cartridge.style.transform = `rotateX(0deg) rotateY(0deg) scale(1)`;
             cartridge.style.transition = 'transform 0.5s ease';
         });
-        card.addEventListener('mouseenter', function () {
+
+        card.addEventListener('mouseenter', () => {
             cartridge.style.transition = 'none';
         });
 
-        /* Inclinação por toque (celular) */
-        card.addEventListener('touchmove', function (e) {
-            var t = e.touches[0];
-            var rect = card.getBoundingClientRect();
-            var x = t.clientX - rect.left - rect.width / 2;
-            var y = t.clientY - rect.top - rect.height / 2;
-            cartridge.style.transition = 'none';
-            cartridge.style.transform = 'rotateX(' + (-y / 14).toFixed(2) + 'deg) rotateY(' + (x / 14).toFixed(2) + 'deg)';
-        }, { passive: true });
-        card.addEventListener('touchend', function () {
-            cartridge.style.transition = 'transform 0.5s ease';
-            cartridge.style.transform = 'rotateX(0deg) rotateY(0deg)';
-        });
-
-        /* ---------- Emulador ---------- */
-        // A ROM é procurada nesta ordem; usa a primeira que responder corretamente.
-        var ROM_CANDIDATES = [
-            'super-metroid_1.smc', // mesma pasta do site (GitHub Pages) - mais confiável
-            'super-metroid.smc',
-            'super-metroid.sfc',
-            'https://cdn.jsdelivr.net/gh/grupoplanejar2024-coder/Super-Metroid-SNES@main/super-metroid_1.smc',
-            'https://raw.githubusercontent.com/grupoplanejar2024-coder/Super-Metroid-SNES/main/super-metroid_1.smc'
-        ];
-        var started = false;
-
-        function escapeHtml(s) {
-            return String(s).replace(/[&<>"]/g, function (c) {
-                return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
-            });
-        }
-
-        function showError(msg, details) {
-            var html = '<b class="err">Erro ao iniciar o jogo</b><br><br>' + msg;
-            if (details && details.length) {
-                html += '<br><br><b>Resultado dos testes:</b>';
-                details.forEach(function (d) { html += '<code>' + escapeHtml(d) + '</code>'; });
-            }
-            html += '<button onclick="location.reload()">Voltar ao menu</button>';
-            var box = document.getElementById('error-box');
-            box.innerHTML = html;
-            box.classList.add('active');
-            document.getElementById('game-container').classList.remove('active');
-            document.body.classList.remove('playing');
-            started = false;
-            document.getElementById('play-btn').disabled = false;
-        }
-
-        async function findRom() {
-            var log = [];
-            for (var i = 0; i < ROM_CANDIDATES.length; i++) {
-                var url = new URL(ROM_CANDIDATES[i], window.location.href).href;
-                try {
-                    var r = await fetch(url, { method: 'HEAD' });
-                    if (!r.ok) { log.push('HTTP ' + r.status + ' → ' + url); continue; }
-                    var type = (r.headers.get('content-type') || '').toLowerCase();
-                    var size = parseInt(r.headers.get('content-length') || '0', 10);
-                    if (type.indexOf('text/html') !== -1) { log.push('Retornou uma página HTML (não é a ROM) → ' + url); continue; }
-                    if (size && size < 100000) { log.push('Arquivo muito pequeno (' + size + ' bytes) → ' + url); continue; }
-                    return { url: url, log: log };
-                } catch (e) {
-                    log.push('Falha de rede/CORS → ' + url);
-                }
-            }
-            return { url: null, log: log };
-        }
-
-        async function startEmulator() {
-            if (started) return;
-            started = true;
-            var btn = document.getElementById('play-btn');
-            btn.disabled = true;
-            btn.textContent = 'CARREGANDO...';
-
-            var found = await findRom();
-            btn.textContent = 'JOGAR AGORA';
-
-            if (!found.url) {
-                showError(
-                    'Não consegui baixar a ROM de nenhum endereço. Confira se o arquivo se chama exatamente ' +
-                    '<b>super-metroid_1.smc</b> (minúsculas) e está no repositório <b>Super-Metroid-SNES</b>, ' +
-                    'e se o repositório está <b>público</b>. Abra a página pelo link do GitHub Pages, não pelo arquivo local.',
-                    found.log
-                );
-                return;
-            }
-
+        document.getElementById('play-btn').addEventListener('click', function() {
             document.getElementById('header-bar').style.display = 'none';
             document.getElementById('game-card').style.display = 'none';
-            document.getElementById('game-container').classList.add('active');
-            document.body.classList.add('playing');
+            
+            var container = document.getElementById('game-container');
+            container.style.display = 'block';
 
             window.EJS_player = '#game';
-            window.EJS_core = 'snes';
+            window.EJS_core = 'snes9x';
             window.EJS_gameName = 'Super Metroid';
             window.EJS_color = '#4b4b56';
-            window.EJS_language = 'pt-BR';
             window.EJS_startOnLoaded = true;
             window.EJS_pathtodata = 'https://cdn.emulatorjs.org/stable/data/';
-            window.EJS_gameUrl = found.url;
+            
+            // URL da ROM otimizada para carregar sem bloqueio de CORS no GitHub Pages
+            window.EJS_gameUrl = 'https://www.emulatorjs.com/roms/snes/Super%20Metroid.sfc';
 
             var script = document.createElement('script');
-            script.src = window.EJS_pathtodata + 'loader.js';
-            script.onerror = function () {
-                showError('Não foi possível carregar o EmulatorJS (cdn.emulatorjs.org). Verifique sua internet ou se algum bloqueador está impedindo.');
-            };
+            script.src = 'https://cdn.emulatorjs.org/stable/data/loader.js';
+            script.async = true;
             document.body.appendChild(script);
-        }
-
-        document.getElementById('play-btn').addEventListener('click', startEmulator);
-        document.getElementById('btn-back').addEventListener('click', function () { location.reload(); });
+        });
     </script>
 </body>
 </html>
