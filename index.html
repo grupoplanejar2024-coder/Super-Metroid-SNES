@@ -292,7 +292,7 @@
         <div id="game"></div>
     </div>
 
-    <script type="text/javascript">
+<script type="text/javascript">
         const card = document.getElementById('game-card');
         const cartridge = document.getElementById('cartridge3d');
 
@@ -330,7 +330,8 @@
             window.EJS_startOnLoaded = true;
             window.EJS_pathtodata = 'https://cdn.emulatorjs.org/stable/data/';
             
-            // NOME SIMPLES DA ROM PARA EVITAR ERRO DE REDE:
+            // OPÇÃO PARA TESTAR: Se o arquivo local continuar dando tela preta, 
+            // você pode usar um link direto público de ROM hospedada em CDN/GitHub Raw:
             window.EJS_gameUrl = 'super-metroid.sfc';
 
             var script = document.createElement('script');
@@ -338,6 +339,4 @@
             script.async = true;
             document.body.appendChild(script);
         });
-    </script>
-</body>
-</html>
+    </script>  
