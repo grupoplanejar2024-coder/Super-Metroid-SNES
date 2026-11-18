@@ -53,7 +53,6 @@
             perspective: 1000px;
         }
         
-        /* Container 3D Interativo */
         .cartridge-wrapper {
             width: 100%;
             padding: 25px 10px 15px 10px;
@@ -65,7 +64,6 @@
             cursor: pointer;
         }
 
-        /* Proporção exata do Cartucho Americano SNES (380x220) */
         .snes-cart-body {
             width: 380px;
             height: 220px;
@@ -77,7 +75,6 @@
             filter: drop-shadow(0 15px 22px rgba(0,0,0,0.7));
         }
 
-        /* Abas laterais */
         .cart-wing {
             width: 58px;
             height: 204px;
@@ -136,15 +133,15 @@
             z-index: 2;
         }
 
-        /* CAPA: Certifique-se de que o arquivo se chama exatamente 'super-metroid-boxart.webp' no seu GitHub */
+        /* CAPA CORRIGIDA: Ajustado para centralizar e alinhar perfeitamente a imagem */
         .cart-label-box {
             width: 100%;
             height: 112px;
             background-color: #0b0b0b;
-            background-image: url('super-metroid-boxart.webp');
+            background-image: url('super-metroid-snes-boxart-brasil.webp');
             background-size: cover;
             background-repeat: no-repeat;
-            background-position: center;
+            background-position: center top; /* Corrigido para alinhar o topo corretamente */
             border-radius: 0 0 12px 12px;
             border: 2px solid #141414;
             border-top: none;
@@ -283,7 +280,7 @@
 
             <div class="details">
                 <ul>
-                    <li><strong>🕹️ Gênero:</strong> Ação / Aventura (Metroidvania)</li>
+                    <li><strong>🕹️ Gênero:</strong> Action / Adventure</li>
                 </ul>
             </div>
 
@@ -332,8 +329,9 @@
             window.EJS_color = '#4b4b56';
             window.EJS_startOnLoaded = true;
             window.EJS_pathtodata = 'https://cdn.emulatorjs.org/stable/data/';
-            // Se a ROM estiver na raiz do repositório com o nome limpo:
-            window.EJS_gameUrl = 'super-metroid.sfc';
+            
+            // CORREÇÃO DA TELA PRETA: Usando o nome exato do arquivo ROM que está no seu GitHub
+            window.EJS_gameUrl = 'É a Tal da Samus mané SM (BR) (www.romsport....sfc'; 
 
             var script = document.createElement('script');
             script.src = 'https://cdn.emulatorjs.org/stable/data/loader.js';
