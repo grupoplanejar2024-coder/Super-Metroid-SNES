@@ -335,9 +335,11 @@
         /* ---------- Emulador ---------- */
         // A ROM é procurada nesta ordem; usa a primeira que responder corretamente.
         var ROM_CANDIDATES = [
-            'super-metroid.sfc', // mesma pasta do site (GitHub Pages) - mais confiável
-            'https://cdn.jsdelivr.net/gh/grupoplanejar2024-coder/Super-Metroid-SNES@main/super-metroid.sfc',
-            'https://raw.githubusercontent.com/grupoplanejar2024-coder/Super-Metroid-SNES/main/super-metroid.sfc'
+            'super-metroid_1.smc', // mesma pasta do site (GitHub Pages) - mais confiável
+            'super-metroid.smc',
+            'super-metroid.sfc',
+            'https://cdn.jsdelivr.net/gh/grupoplanejar2024-coder/Super-Metroid-SNES@main/super-metroid_1.smc',
+            'https://raw.githubusercontent.com/grupoplanejar2024-coder/Super-Metroid-SNES/main/super-metroid_1.smc'
         ];
         var started = false;
 
@@ -395,7 +397,7 @@
             if (!found.url) {
                 showError(
                     'Não consegui baixar a ROM de nenhum endereço. Confira se o arquivo se chama exatamente ' +
-                    '<b>super-metroid.sfc</b> (minúsculas) e está no repositório <b>Super-Metroid-SNES</b>, ' +
+                    '<b>super-metroid_1.smc</b> (minúsculas) e está no repositório <b>Super-Metroid-SNES</b>, ' +
                     'e se o repositório está <b>público</b>. Abra a página pelo link do GitHub Pages, não pelo arquivo local.',
                     found.log
                 );
