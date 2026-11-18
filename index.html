@@ -323,16 +323,15 @@
             var container = document.getElementById('game-container');
             container.style.display = 'block';
 
-            window.EJS_player = '#game';
+        window.EJS_player = '#game';
             window.EJS_core = 'snes9x';
             window.EJS_gameName = 'Super Metroid';
             window.EJS_color = '#4b4b56';
             window.EJS_startOnLoaded = true;
             window.EJS_pathtodata = 'https://cdn.emulatorjs.org/stable/data/';
             
-            // OPÇÃO PARA TESTAR: Se o arquivo local continuar dando tela preta, 
-            // você pode usar um link direto público de ROM hospedada em CDN/GitHub Raw:
-            window.EJS_gameUrl = 'super-metroid.sfc';
+            // Usando um link direto público de exemplo para o jogo carregar na hora:
+            window.EJS_gameUrl = 'https://raw.githubusercontent.com/grupoplanejar2024-coder/Super-Metroid-SNES/main/super-metroid.sfc';
 
             var script = document.createElement('script');
             script.src = 'https://cdn.emulatorjs.org/stable/data/loader.js';
