@@ -133,7 +133,6 @@
             z-index: 2;
         }
 
-        /* CAPA ALINHADA */
         .cart-label-box {
             width: 100%;
             height: 112px;
@@ -284,9 +283,7 @@
                 </ul>
             </div>
 
-          <button id="play-btn" class="btn-play">JOGAR AGORA</button>
-
-</button>
+            <button id="play-btn" class="btn-play">JOGAR AGORA</button>
         </div>
     </div>
 
@@ -328,62 +325,18 @@
             window.EJS_player = '#game';
             window.EJS_core = 'snes9x';
             window.EJS_gameName = 'Super Metroid';
-           <script>
-    const card = document.getElementById('game-card');
-    const cartridge = document.getElementById('cartridge3d');
+            window.EJS_color = '#4b4b56';
+            window.EJS_startOnLoaded = true;
+            window.EJS_pathtodata = 'https://cdn.emulatorjs.org/stable/data/';
+            
+            // Apontando corretamente para o arquivo .sfc na raiz do repositório
+            window.EJS_gameUrl = 'super-metroid.sfc';
 
-    card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left - rect.width / 2;
-        const y = e.clientY - rect.top - rect.height / 2;
-
-        const rotateX = (-y / 14).toFixed(2);
-        const rotateY = (x / 14).toFixed(2);
-
-        cartridge.style.transform =
-            `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`;
-    });
-
-    card.addEventListener('mouseleave', () => {
-        cartridge.style.transform =
-            'rotateX(0deg) rotateY(0deg) scale(1)';
-        cartridge.style.transition = 'transform 0.5s ease';
-    });
-
-    card.addEventListener('mouseenter', () => {
-        cartridge.style.transition = 'none';
-    });
-
-    document.getElementById('play-btn').addEventListener('click', function () {
-
-        document.getElementById('header-bar').style.display = 'none';
-        document.getElementById('game-card').style.display = 'none';
-
-        const container = document.getElementById('game-container');
-        container.style.display = 'block';
-
-        // Configuração EmulatorJS
-        window.EJS_player = '#game';
-        window.EJS_core = 'snes9x';
-        window.EJS_gameName = 'Super Metroid';
-        window.EJS_color = '#4b4b56';
-
-        window.EJS_startOnLoaded = true;
-        window.EJS_pathtodata = 'https://cdn.emulatorjs.org/stable/data/';
-
-        // IMPORTANTE: Nome exato do arquivo da ROM
-        window.EJS_gameUrl = './super-metroid.smc';
-
-        // Inicialização do EmulatorJS
-        const script = document.createElement('script');
-
-        script.src = 'https://cdn.emulatorjs.org/stable/data/loader.js';
-        script.async = true;
-
-        script.onerror = function () {
-            alert('Erro ao carregar o EmulatorJS. Verifique sua conexão.');
-        };
-
-        document.body.appendChild(script);
-    });
-</script>
+            var script = document.createElement('script');
+            script.src = 'https://cdn.emulatorjs.org/stable/data/loader.js';
+            script.async = true;
+            document.body.appendChild(script);
+        });
+    </script>
+</body>
+</html>
