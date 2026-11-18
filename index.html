@@ -77,7 +77,7 @@
             filter: drop-shadow(0 15px 22px rgba(0,0,0,0.7));
         }
 
-        /* Abas laterais mais estreitas e alinhadas à proporção original */
+        /* Abas laterais */
         .cart-wing {
             width: 58px;
             height: 204px;
@@ -100,7 +100,6 @@
             border-left: 1px solid #6b6b74;
         }
 
-        /* Ranhuras horizontais das laterais */
         .wing-groove {
             width: 100%;
             height: 4px;
@@ -108,7 +107,6 @@
             border-bottom: 1px solid #b8b8c2;
         }
 
-        /* Parafusos metálicos na base */
         .cart-screw {
             position: absolute;
             bottom: 8px;
@@ -121,7 +119,6 @@
         .cart-wing.left .cart-screw { left: 26px; }
         .cart-wing.right .cart-screw { right: 26px; }
 
-        /* Bloco Central Largo Elevado do Cartucho */
         .cart-center-block {
             width: 264px;
             height: 220px;
@@ -139,15 +136,12 @@
             z-index: 2;
         }
 
-        /* Adesivo (Label) preenchido por completo sem bordas vazias (Altere o background-image para a sua capa) */
+        /* CAPA: Certifique-se de que o arquivo se chama exatamente 'super-metroid-boxart.webp' no seu GitHub */
         .cart-label-box {
             width: 100%;
             height: 112px;
             background-color: #0b0b0b;
-            background-image: url.cart-label-box {
-    ...
-    background-image: url('super-metroid-boxart.webp'); /* Use o nome exato da imagem */
-}
+            background-image: url('super-metroid-boxart.webp');
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center;
@@ -159,7 +153,6 @@
             overflow: hidden;
         }
 
-        /* Reflexo sutil no adesivo */
         .cart-label-box::after {
             content: '';
             position: absolute;
@@ -173,7 +166,6 @@
             left: 150%;
         }
 
-        /* Sulco / Trava Horizontal inferior do cartucho */
         .cart-lock-slot {
             width: 236px;
             height: 18px;
@@ -186,7 +178,6 @@
             align-items: center;
         }
 
-        /* Detalhe interno central da trava */
         .cart-lock-inner {
             width: 78px;
             height: 11px;
@@ -234,7 +225,6 @@
         }
         #game { width: 100%; height: 100%; }
 
-        /* Responsividade para telas de celulares menores */
         @media (max-width: 400px) {
             .snes-cart-body {
                 transform: scale(0.85) translateZ(20px);
@@ -249,10 +239,8 @@
     </header>
 
     <div id="game-card">
-        <!-- Cartucho Americano SNES Realista 3D -->
         <div class="cartridge-wrapper" id="cartridge3d">
             <div class="snes-cart-body">
-                <!-- Asa Esquerda -->
                 <div class="cart-wing left">
                     <div class="wing-groove"></div>
                     <div class="wing-groove"></div>
@@ -262,7 +250,6 @@
                     <div class="cart-screw"></div>
                 </div>
 
-                <!-- Corpo Central Elevado -->
                 <div class="cart-center-block">
                     <div class="cart-label-box"></div>
                     <div class="cart-lock-slot">
@@ -270,7 +257,6 @@
                     </div>
                 </div>
 
-                <!-- Asa Direita -->
                 <div class="cart-wing right">
                     <div class="wing-groove"></div>
                     <div class="wing-groove"></div>
@@ -310,7 +296,6 @@
     </div>
 
     <script type="text/javascript">
-        // Efeito 3D interativo
         const card = document.getElementById('game-card');
         const cartridge = document.getElementById('cartridge3d');
 
@@ -334,7 +319,6 @@
             cartridge.style.transition = 'none';
         });
 
-        // Inicialização do Emulador para a ROM correspondente
         document.getElementById('play-btn').addEventListener('click', function() {
             document.getElementById('header-bar').style.display = 'none';
             document.getElementById('game-card').style.display = 'none';
@@ -348,7 +332,8 @@
             window.EJS_color = '#4b4b56';
             window.EJS_startOnLoaded = true;
             window.EJS_pathtodata = 'https://cdn.emulatorjs.org/stable/data/';
-            window.EJS_gameUrl = 'super-metroid.sfc'; /* Use o nome exato e simples da ROM */
+            // Se a ROM estiver na raiz do repositório com o nome limpo:
+            window.EJS_gameUrl = 'super-metroid.sfc';
 
             var script = document.createElement('script');
             script.src = 'https://cdn.emulatorjs.org/stable/data/loader.js';
@@ -358,4 +343,3 @@
     </script>
 </body>
 </html>
-
