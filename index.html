@@ -133,7 +133,7 @@
             z-index: 2;
         }
 
-        /* CAPA: Apontando para super-metroid-boxart.webp e alinhada */
+        /* CAPA ALINHADA */
         .cart-label-box {
             width: 100%;
             height: 112px;
@@ -292,7 +292,7 @@
         <div id="game"></div>
     </div>
 
-<script type="text/javascript">
+    <script type="text/javascript">
         const card = document.getElementById('game-card');
         const cartridge = document.getElementById('cartridge3d');
 
@@ -316,7 +316,7 @@
             cartridge.style.transition = 'none';
         });
 
-    document.getElementById('play-btn').addEventListener('click', function() {
+        document.getElementById('play-btn').addEventListener('click', function() {
             document.getElementById('header-bar').style.display = 'none';
             document.getElementById('game-card').style.display = 'none';
             
@@ -330,11 +330,14 @@
             window.EJS_startOnLoaded = true;
             window.EJS_pathtodata = 'https://cdn.emulatorjs.org/stable/data/';
             
-            // Link direto via CDN otimizada para EmulatorJS
+            // URL da ROM otimizada para carregar sem bloqueio de CORS no GitHub Pages
             window.EJS_gameUrl = 'https://www.emulatorjs.com/roms/snes/Super%20Metroid.sfc';
 
             var script = document.createElement('script');
             script.src = 'https://cdn.emulatorjs.org/stable/data/loader.js';
             script.async = true;
             document.body.appendChild(script);
-        }); 
+        });
+    </script>
+</body>
+</html>
